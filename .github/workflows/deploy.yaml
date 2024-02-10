@@ -2,17 +2,17 @@ name: Deploy application
 on: push
 jobs:
   deploy:
-    build:
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-    steps:
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install nodejs 16
+        uses: actions/setup-node@v3
         with:
           node-version: 16
-    steps:
-      - run: npm ci
-    steps:
-      - run: npm test
-    steps:
-      - run: echo "Deploying application!!!"
+      - name: Install packages
+        run: npm ci
+      - name: Run tests
+        run: npm test
+      - name: Deploy app
+        run: echo "Deploying application!!!"
