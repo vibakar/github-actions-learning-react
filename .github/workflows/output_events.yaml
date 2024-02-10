@@ -1,8 +1,0 @@
-name: Output Events
-on: push
-jobs:
-  events:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Contexts
-        run: echo "${{ toJSON(github) }}"

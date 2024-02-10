@@ -12,7 +12,11 @@ jobs:
           node-version: 16
       - name: Install packages
         run: npm ci
+      - name: Lint check
+        run: npm run lint
       - name: Run tests
-        run: npm test
+        run: npm run test
+      - name: Build
+        run: npm run build
       - name: Deploy app
         run: echo "Deploying application!!!"
