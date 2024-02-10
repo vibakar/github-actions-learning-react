@@ -1,7 +1,7 @@
 name: Output Events
 on: push
 jobs:
-  deploy:
+  events:
     runs-on: ubuntu-latest
     steps:
       - name: Print Contexts
