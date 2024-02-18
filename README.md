@@ -5,7 +5,7 @@
     - Triggers workflow when pushed to main branch or pull request is raised to master branch.
         - Added config not to trigger the workflow if the changes made on README.md file 
     - Uses env variable to install specific nodejs version
-        - nodejs version configured on job level as well as on job level
+        - nodejs version configured on workflow level as well as on job level
     - Uses secerts created in repository. Also uses environment secrets in the repository
 
 ### ci-sequence.yaml
