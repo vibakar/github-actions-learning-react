@@ -17,13 +17,6 @@ jobs:
         run: npm ci
       - name: Lint check
         run: npm run lint
-
-name: Run Tests
-on: 
-  push:
-    branches:
-      - 'main'
-jobs:
   test:
     runs-on: ubuntu-latest
     steps:
@@ -37,13 +30,6 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm run test
-
-name: Build App
-on: 
-  push:
-    branches:
-      - 'main'
-jobs:
   build:
     runs-on: ubuntu-latest
     steps:
