@@ -1,9 +1,15 @@
 name: Lint Check
-on: 
+on:
   push:
     branches:
-      - 'main'
-env:
+      - main
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+
+env: 
   node-version: 20
 jobs:
   lint:
@@ -11,7 +17,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install nodejs 20
+      - name: Install nodejs
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
@@ -25,10 +31,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install nodejs 20
+      - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.node-version }}
       - name: Install packages
         run: npm ci
       - name: Run tests
@@ -39,10 +45,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install nodejs 20
+      - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ env.node-version }}
       - name: Install packages
         run: npm ci
       - name: Build
