@@ -1,4 +1,4 @@
-name: Lint Check
+name: CI Sequence
 on: workflow_dispatch
 jobs:
   lint:
