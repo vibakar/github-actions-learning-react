@@ -11,3 +11,8 @@
 ### ci-sequence.yaml
     - Runs jobs in sequnece
     - Triggers on manual run
+
+### ci.yaml
+    - Uses if condition
+    - job will continue on error
+        - Even if lint step fails, rest of the steps will continue to execute
