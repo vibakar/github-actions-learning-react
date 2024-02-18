@@ -8,9 +8,8 @@ on:
       - opened
     branches:
       - main
-
 env: 
-  node-version: 20
+  workflow_node_version: 20
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.node-version }}
+          node-version: ${{ env.workflow_node_version }}
       - name: Install packages
         run: npm ci
       - name: Lint check
@@ -34,7 +33,7 @@ jobs:
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.node-version }}
+          node-version: ${{ env.workflow_node_version }}
       - name: Install packages
         run: npm ci
       - name: Run tests
@@ -42,13 +41,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: test
+    env:
+      job_node_version: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install nodejs
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.node-version }}
+          node-version: ${{ env.job_node_version }}
       - name: Install packages
         run: npm ci
       - name: Build
