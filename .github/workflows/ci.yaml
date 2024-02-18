@@ -13,9 +13,11 @@ jobs:
       - name: Install packages
         run: npm ci
       - name: Lint check
+        id: lint
         continue-on-error: true
         run: npm run lint
       - name: Run tests
+        id: test
         run: npm run test
       - name: Build
         run: npm run build
