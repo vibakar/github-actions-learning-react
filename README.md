@@ -13,6 +13,7 @@
     - Triggers on manual run
 
 ### ci.yaml
+    - Runs only on manual trigger
     - Uses if condition
     - job will continue on error
         - Even if lint step fails, rest of the steps will continue to execute
