@@ -56,7 +56,7 @@ jobs:
           path: |
             dist
   deploy:
-    if: ${{ needs.build.outputs.arch_type != "" }}
+    if: ${{ needs.build.outputs.arch_type }} != ""
     runs-on: ubuntu-latest
     needs: build
     steps:
