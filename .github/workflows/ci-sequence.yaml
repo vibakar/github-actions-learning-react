@@ -3,6 +3,8 @@ on: workflow_dispatch
 jobs:
   lint:
     runs-on: ubuntu-latest
+    outputs:
+      arch_type: {{ steps.arch.outputs.arch_type }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -12,6 +14,9 @@ jobs:
           node-version: 20
       - name: Install packages
         run: npm ci
+      - name: Arch type
+        id: arch
+        run: echo "arch_type=$(arch) >> $GITHUB_OUTPUT"
       - name: Lint check
         run: npm run lint
   test:
@@ -26,6 +31,8 @@ jobs:
           node-version: 20
       - name: Install packages
         run: npm ci
+      - name: Print output from lint job
+        run: echo "${{ needs.lint.outputs.arch_type }}"
       - name: Run tests
         run: npm run test
   build:
