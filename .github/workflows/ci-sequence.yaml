@@ -16,7 +16,7 @@ jobs:
         run: npm ci
       - name: Arch type
         id: arch
-        run: echo "arch_type=$(arch) >> $GITHUB_OUTPUT"
+        run: echo "arch_type=$(arch)" >> $GITHUB_OUTPUT
       - name: Printing output from Prev step
         run: echo "${{ steps.arch.outputs.arch_type }}"
       - name: Lint check
