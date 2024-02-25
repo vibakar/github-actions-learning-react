@@ -33,7 +33,7 @@ jobs:
       - name: Install packages
         run: npm ci
       - name: Print output from lint job
-        run: echo ${{ needs.lint.outputs.arch_type }}
+        run: echo "output - ${{ needs.lint.outputs.arch_type }}"
       - name: Run tests
         run: npm run test
   build:
