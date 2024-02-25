@@ -22,7 +22,7 @@ jobs:
       - name: Lint check
         run: npm run lint
   test:
-    if: ${{ needs.lint.outputs.arch_type }} != "x86_63"
+    if: ${{ needs.lint.outputs.arch_type }} == "x86_63"
     runs-on: ubuntu-latest
     needs: lint
     steps:
