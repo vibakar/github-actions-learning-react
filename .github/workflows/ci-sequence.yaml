@@ -16,7 +16,7 @@ jobs:
         run: npm ci
       - name: Arch type
         id: arch
-        run: echo "arch_type=$(arch) >> $GITHUB_OUTPUT"
+        run: echo "arch_type='testing' >> $GITHUB_OUTPUT"
       - name: Lint check
         run: npm run lint
   test:
