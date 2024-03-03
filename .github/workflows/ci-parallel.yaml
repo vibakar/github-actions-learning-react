@@ -18,12 +18,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install nodejs
-        uses: actions/setup-node@v4
+      - name: setup nodejs & install dependencies
+        uses: ./.github/actions
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Install packages
-        run: npm ci
       - name: Lint check
         run: npm run lint
   test:
