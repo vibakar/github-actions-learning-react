@@ -6,6 +6,11 @@ jobs:
     outputs:
       arch_type: ${{ steps.arch.outputs.arch_type }}
     steps:
+      - name: Arch type
+        id: arch
+        run: echo "arch_type=$(arch)" >> $GITHUB_OUTPUT
+      - name: Printing output from previous step
+        run: echo "${{ steps.arch.outputs.arch_type }}"
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install nodejs 20
@@ -14,11 +19,6 @@ jobs:
           node-version: 20
       - name: Install packages
         run: npm ci
-      - name: Arch type
-        id: arch
-        run: echo "arch_type=$(arch)" >> $GITHUB_OUTPUT
-      - name: Printing output from Prev step
-        run: echo "${{ steps.arch.outputs.arch_type }}"
       - name: Lint check
         run: npm run lint
   test:
