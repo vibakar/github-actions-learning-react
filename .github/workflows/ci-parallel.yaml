@@ -19,7 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: setup nodejs & install dependencies
-        uses: ./.github/actions
+        uses: ./.github/actions/install-dep
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Lint check
