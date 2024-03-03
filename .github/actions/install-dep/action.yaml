@@ -12,6 +12,11 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
+    - name: Get npm cache directory
+      id: npm-cache-dir
+      shell: bash
+      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
     - name: Install packages
+      if: steps.npm-cache-dir.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
